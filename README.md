@@ -283,7 +283,7 @@ POST /api/payment/verify/
 
 ### GitHub
 
-https://github.com/narayana-yanamadala
+https://github.com/narayana-yanamadala/ecommerce-backend.git
 
 ---
 
