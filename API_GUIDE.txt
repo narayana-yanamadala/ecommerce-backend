@@ -1,0 +1,72 @@
+====================================================
+  MULTIMART - API REFERENCE GUIDE
+====================================================
+
+BASE URL: http://127.0.0.1:8000
+
+---- PUBLIC APIs (no login needed) ----------------
+
+GET  /api/store/products/             → All products
+GET  /api/store/products/?category=mobile  → Filter by category
+GET  /api/store/products/<id>/        → Single product
+GET  /api/store/categories/           → All categories
+
+---- ADMIN APIs (need admin token) ----------------
+
+How to get admin token:
+  POST /api/auth/login/
+  Body: {"username": "admin", "password": "your_password"}
+  Copy the "token" from response
+
+POST   /api/store/products/add/        → Add 1 product
+PUT    /api/store/products/<id>/manage/ → Update product
+DELETE /api/store/products/<id>/manage/ → Delete product
+POST   /api/store/products/bulk/       → Add many products at once
+
+---- ADD PRODUCT EXAMPLE (use Postman or Thunder Client) ---
+
+POST http://127.0.0.1:8000/api/store/products/add/
+Headers:
+  Authorization: Token YOUR_ADMIN_TOKEN_HERE
+  Content-Type: application/json
+
+Body:
+{
+  "productName": "Samsung Galaxy A54",
+  "category_id": 1,
+  "price": "38999.00",
+  "imgUrl": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500",
+  "shortDesc": "50MP camera, 5000mAh battery, IP67 rating",
+  "description": "The Galaxy A54 offers flagship features at mid-range price.",
+  "avgRating": "4.3",
+  "inStock": true,
+  "discount": 12
+}
+
+---- BULK ADD EXAMPLE ---
+
+POST http://127.0.0.1:8000/api/store/products/bulk/
+Headers:
+  Authorization: Token YOUR_ADMIN_TOKEN_HERE
+  Content-Type: application/json
+
+Body: (array of products)
+[
+  {"productName": "Product 1", "category_id": 1, "price": "999", "imgUrl": "https://...", ...},
+  {"productName": "Product 2", "category_id": 2, "price": "1999", "imgUrl": "https://...", ...}
+]
+
+---- CATEGORY IDs (after seeding) ----------------
+  1 = Mobile
+  2 = Sofa
+  3 = Chair
+  4 = Watch
+  5 = Wireless
+
+====================================================
+  DJANGO ADMIN PANEL
+====================================================
+  URL: http://127.0.0.1:8000/admin
+  Login with your superuser credentials
+  You can add/edit/delete products directly from here too!
+====================================================
