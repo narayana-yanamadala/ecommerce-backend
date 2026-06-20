@@ -1,3 +1,6 @@
+# Environment Variables
+.env
+
 # Virtual Environment
 venv/
 env/
@@ -9,9 +12,6 @@ __pycache__/
 
 # Django Database
 db.sqlite3
-
-# Environment Variables
-.env
 
 # Static Files
 staticfiles/
@@ -44,3 +44,15 @@ htmlcov/
 # Python Egg Files
 *.egg-info/
 .eggs/
+
+# Render
+.render/
+
+# Django Migrations Cache
+**/__pycache__/
+
+# Local Settings
+local_settings.py
+
+# Environment Config Files
+.env.*
